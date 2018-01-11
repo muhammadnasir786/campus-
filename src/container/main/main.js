@@ -8,7 +8,7 @@ import {
     Link
 } from 'react-router-dom'
 import { connect } from 'react-redux';
-
+import Navbar from "../../components/navbar/navbar";
 
 let mapStateToProps = (state) => {
     return {
@@ -31,11 +31,11 @@ class Main extends Component {
                         this.props.isLogin ?
                             <div>
                                 <App />
-                                <h1>Login Successfully</h1>
+                                {/* this is main app */}
                             </div>
                             :
                             <div>
-                                <App />
+                                <Navbar/>
                                 <Router>
                                     <div>
                                         {this.props.registerShow ?

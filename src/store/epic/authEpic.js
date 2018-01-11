@@ -2,17 +2,17 @@
 
 import { Observable } from 'rxjs'
 import  AuthAction from "../actions/authAction";
-
 import * as firebase from 'firebase';
-var config = {
-    apiKey: "AIzaSyDqPpxlIGjEikoqzvZqB7_-10158KdfxOs",
-    authDomain: "reactreduxtodoappfirebase.firebaseapp.com",
-    databaseURL: "https://reactreduxtodoappfirebase.firebaseio.com",
-    projectId: "reactreduxtodoappfirebase",
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6id6mjaUbJ6ADnQHIpAz3Q1MM58nHuK4",
+    authDomain: "campus-recuritment-system.firebaseapp.com",
+    databaseURL: "https://campus-recuritment-system.firebaseio.com",
+    projectId: "campus-recuritment-system",
     storageBucket: "",
-    messagingSenderId: "866095779438"
+    messagingSenderId: "922873742971"
   };
-firebase.initializeApp(config);
+  firebase.initializeApp(config);
 
 const ref = firebase.database().ref('/');
 const auth = firebase.auth();
@@ -33,13 +33,13 @@ class AuthEpic {
                         // login OK use flages and dispatch at the bottom .map((x)=>{})
                         alert('User Successfully Created')
                     }).catch((err)=>{
-                        console.log(err)
+                        // alert(err)
                         alert(err.message)
                         
                     })
                 )
                 .map((x)=>{
-                    return userCreated ? AuthAction.createUserSuccessfully('Naisr') : { type : null}
+                    return userCreated ? AuthAction.createUserSuccessfully() : { type : null}
                 })
             })
         }
@@ -60,13 +60,15 @@ class AuthEpic {
                         //     userData = s.val();
                         //     console.log(userData)
                         // });
+                        console.log('Nasir')
+                        // return { type : AuthAction.LOGIN_USER_SUCCESSFULLY }
                     }).catch((err)=>{
-                        console.log(err)
+                        alert(err.message)
                     })
                 )
                 .map((x)=>{
-                    return { type : AuthAction.LOGIN_USER_SUCCESSFULLY }
-                    // return   authenticate ? AuthAction.loginUserSuccessfully(userData) : {type : null}
+                    // return { type : null }
+                    return   authenticate ? AuthAction.loginUserSuccessfully() : {type : null}
                 })
             })
         }

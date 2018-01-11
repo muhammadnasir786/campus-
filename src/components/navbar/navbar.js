@@ -7,7 +7,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { CardHeader } from 'material-ui/Card';
 import { connect } from 'react-redux'
 import * as firebase from 'firebase'
-import AuthAction from '../../store/actions/authAction'
+import AuthAction from '../../store/actions/authAction';
+import SideBar from '../../container/sidebar/sideBar'
 class Navbar extends React.Component {
 
     constructor(props) {
@@ -24,7 +25,7 @@ class Navbar extends React.Component {
             <div>
                 <AppBar
                     onLeftIconButtonClick={this.props.isLogin ? this.handleToggle : () => { alert('Login First') }}
-                    title="User Authentication Boiler Plate"
+                    title="Campus Resuritment System"
                     // iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={<FlatButton onClick={ this.props.isLogin ? ()=>{
                         firebase.auth().signOut().then(()=>{
@@ -83,17 +84,11 @@ class Navbar extends React.Component {
                 />
                 <Drawer
                     docked={false}
-                    width={260}
+                    width={340}
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({ open })}
                 >
-                    <CardHeader
-                        title={'this.props.user.name'}
-                        subtitle="MERN Stack Developer"
-                        avatar={'this.props.user.photoURL'}
-                    />
-                    <MenuItem onClick={this.handleClose}>Menu Item</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Menu Item 2</MenuItem>
+                    <SideBar handleClose={this.handleClose} />
                 </Drawer>
             </div>
         );

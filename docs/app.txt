@@ -20,3 +20,10 @@ firebase.auth().onAuthStateChanged((user) => {
             }
             console.log("is logged in", this.props.isLogged);
         });
+
+
+    applyToJob : {
+        uid : {
+            akasdklasd : postKey
+        }
+    }

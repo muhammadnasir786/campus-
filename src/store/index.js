@@ -3,18 +3,30 @@ import { combineEpics, createEpicMiddleware } from 'redux-observable';
 
 //requiring all reducers
 import AuthReducer from './reducers/authReducer';
-
+import CRSReducer from "./reducers/CRSReducer";
 //requiring all epics
 import AuthEpic from './epic/authEpic';
+import CRSEpic from './epic/CRSEpic';
 
 //combine epic
 const rootEpic = combineEpics(
     AuthEpic.createUser,
-    AuthEpic.loginUser
+    AuthEpic.loginUser,
+    CRSEpic.addPost,
+    CRSEpic.getPost,
+    CRSEpic.deletePost,
+    CRSEpic.updatePost,
+    CRSEpic.getCancelLogout,
+    CRSEpic.getUsers,
+    CRSEpic.updateProfile,
+    CRSEpic.applyToJob,
+    CRSEpic.getApplyToJob
+    
+
 );
 //combine reducers
 const rootReducer = combineReducers({
-    AuthReducer
+    AuthReducer,CRSReducer
 })
 
 //creating middleware
