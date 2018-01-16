@@ -5,7 +5,7 @@ let CRS_STATE = {
     allPost : {},
     role : '',
     allUsers : {},
-    getApplyToJob : {}
+   
 }
 
 
@@ -38,10 +38,6 @@ let CRSReducer = (state = CRS_STATE,action)=>{
             allUsers[action.payload.key] = action.payload.userData;
             return { ...state , allUsers  ,role}
 
-        case CRSAction.GET_APPLY_TO_JOB_ADD : 
-            let getApplyToJob = Object.assign({},state.getApplyToJob);
-            getApplyToJob[action.payload.key] = action.payload.data;
-            return { ...state , getApplyToJob};
         case 'LOGOUT' : 
             return { 
                 allPost : {},

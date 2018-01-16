@@ -39,6 +39,7 @@ const cardStyle = {
         
         // console.log(this.state.value)
         return (
+        <div>
             <div>
               <h1>All Company List</h1>
 
@@ -50,7 +51,7 @@ const cardStyle = {
                                                     <List>
                                                         <ListItem
                                                             disabled={true}
-                                                            leftAvatar={<Avatar src={'user.userPhotoURL'} />}
+                                                            leftAvatar={<Avatar src={'https://s3.amazonaws.com/images.seroundtable.com/google-g-groupon-g-1441368832.gif'} />}
                                                             >
                                                             <p style={{ fontSize : 25  , marginBottom : -15 , marginTop : -5}}>{user.name}</p>
                                                     </ListItem>
@@ -67,12 +68,15 @@ const cardStyle = {
                                    
                    
             </div>
+        </div> 
         )
     }
 }
 let mapStateToProps = (state)=>{
     return{
-        allUsers : state.CRSReducer.allUsers
+        allUsers : state.CRSReducer.allUsers,
+        role : state.CRSReducer.role,
+
     }
 }
 let mapDispatchToProps = (dispatch)=>{

@@ -20,7 +20,7 @@ const rootEpic = combineEpics(
     CRSEpic.getUsers,
     CRSEpic.updateProfile,
     CRSEpic.applyToJob,
-    CRSEpic.getApplyToJob
+    
     
 
 );

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import * as firebase from 'firebase';
 import Avatar from 'material-ui/Avatar';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 
 
 const style = {
@@ -30,7 +30,7 @@ class OneProfile extends React.Component {
                          <List>
                             <ListItem
                                 disabled={true}
-                                leftAvatar={<Avatar src={'user.userPhotoURL'} />}
+                                leftAvatar={<Avatar src={'https://pickaface.net/gallery/avatar/nadinesomrita52e59e23695c7.png'} />}
                                 >
                                 <p style={{ fontSize : 25  , marginBottom : -15 , marginTop : -5}}>{user.name}</p>
                          </ListItem>

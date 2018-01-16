@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let allpost = {post1 : {} , post2 : {} , post3 : {}}
+let allPostKeys = Object.keys(allpost);
+
+let applyObj = {asdasd : 'post1' , jdhajkdha : 'post3'}
+let applyToJob = Object.values(applyObj)
+        console.log(applyToJob)
+        console.log(allPostKeys)
+        applyToJob.map((appPostKey,i)=>{
+            allPostKeys.map((postKey)=>{
+                // console.log(postkey)
+            if(postKey == appPostKey){
+               // How to find diffrence in array
+            }else{ console.log('post Not Applied')}
+	})
+})
+    </script>
+</body>
+</html>

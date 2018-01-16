@@ -20,6 +20,8 @@ const ref = firebase.database().ref('/');
 
 // postRef.push({name : 'Nasir'})
 export default class CRSEpic {
+
+
     
     static applyToJob = (action$) => {
         return action$.ofType(CRSAction.APPLY_TO_JOB)
@@ -28,9 +30,10 @@ export default class CRSEpic {
             }) => {
                 console.log(payload)
                 return Observable.fromPromise(
-                    ref.child(`applyToJob/${firebase.auth().currentUser.uid}/`).push(payload).then(()=>{
-                        // alert('Post Created Successfully')
-                    })
+                    userRef.child(`/${firebase.auth().currentUser.uid}/appliedPost`).push(payload).then(()=>{
+                        // alert('Post Created Successfully') payload = PostKey
+                        postRef.child(`${payload}/appliedstudent/`).push(firebase.auth().currentUser.uid);
+                    }).catch((re)=>{ console.log(re.message)})  
                 )
                     .map((x) => {
                         return {
@@ -40,38 +43,7 @@ export default class CRSEpic {
             })
     }
 
-    static getApplyToJob = (action$) => {
-        return action$.ofType(CRSAction.GET_APPLY_TO_JOB)
-            .switchMap(({
-                payload
-            }) => {
-                return new Observable((observer) => {
-                     ref.child(`applyToJob`).on('child_added', (s) => {
-                        observer.next({
-                            type: CRSAction.GET_APPLY_TO_JOB_ADD,
-                            payload: {
-                                key: s.key,
-                                data: s.val()
-                            }
-                        })
-                    })
-                     ref.child(`applyToJob`).on('child_changed', (s) => {
-                        console.log(s.val(), s.key)
-                        alert('child_changed')
-                        observer.next({
-                            type: CRSAction.GET_APPLY_TO_JOB_ADD,
-                            payload: {
-                                key: s.key,
-                                data: s.val()
-                            }
-                        })
-                    })
-
-                }).takeUntil(action$.ofType('LOGOUT'));
-            })
-    }
-
-
+    
 
     static getUsers = (action$) => {
         return action$.ofType(CRSAction.GET_USERS)
@@ -90,7 +62,7 @@ export default class CRSEpic {
                     })
                     userRef.on('child_changed', (s) => {
                         console.log(s.val(), s.key)
-                        alert('child_changed')
+                        // alert('child_changed')
                         observer.next({
                             type: CRSAction.GET_USER_PROFILE,
                             payload: {
@@ -104,7 +76,6 @@ export default class CRSEpic {
             })
     }
 
-    
     static updateProfile = (action$) => {
         return action$.ofType(CRSAction.UPDATE_PROFILE)
             .switchMap(({
@@ -123,7 +94,6 @@ export default class CRSEpic {
                     })
             })
     }
-
 
     static addPost = (action$) => {
         return action$.ofType(CRSAction.ADD_POST)
@@ -204,7 +174,7 @@ export default class CRSEpic {
                     })
                     postRef.on('child_changed', (s) => {
                         console.log(s.val(), s.key)
-                        alert('child_changed')
+                        // alert('child_changed')
                         observer.next({
                             type: CRSAction.GET_POST_UPDATE,
                             payload: {

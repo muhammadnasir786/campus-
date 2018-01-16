@@ -26,4 +26,31 @@ firebase.auth().onAuthStateChanged((user) => {
         uid : {
             akasdklasd : postKey
         }
+    } // Done
+
+    postID : {
+        postData  :{ uid  } ,
+        appliedStudent : {
+            sdasda : student uiD
+        }
     }
+
+    
+
+    user : {
+        uid : {
+            data : { role == studend}, 
+            appliedPost : {
+                kskdajskdajsd : postID
+                kskdajskdajsd : postID
+                kskdajskdajsd : postID
+                kskdajskdajsd : postID
+            }
+
+        }
+        uid : {
+            data  = company, 
+            appliedByStudent : {
+
+            }
+        }

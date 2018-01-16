@@ -25,49 +25,54 @@ class  CreatePost extends React.Component {
     }
     render(){
         return(
-            <Paper style={style} zDepth={3}>
-            <h1> Create Post </h1>
-                <TextField
-                     value = {this.state.title}
-                    floatingLabelText="Job Title"
-                    onChange={(e)=> this.setState({title : e.target.value })}
-                    /><br />
-                 <TextField
-                     value = {this.state.salary}
-                     type='text'
-                    floatingLabelText="Salary"
-                    onChange={(e)=> this.setState({salary : e.target.value })}
-                    /><br />
-                 <TextField
-                    onChange={(e)=> this.setState({description : e.target.value })}
-                    value={this.state.description}
-                    floatingLabelText="Job Description"
-                    multiLine={true}
-                    rows={2}
-                    /><br />
-               <RaisedButton label="Cancel " primary={true} style={{ margin: 12,}} />
-               <RaisedButton label="Create Post" primary={true} style={{ margin: 12}} 
-               onClick={()=>{
-                   let post = {
-                    title : this.state.title,
-                    salary : this.state.salary,
-                    description  : this.state.description,
-                    uid : firebase.auth().currentUser.uid
-                   }
-                   this.props.addPost(post);
-                   this.setState({ title : '' , salary : '', description : ''})
+    //  this.props.role === 'company'?  
+     <div>
+        <Paper style={style} zDepth={3}>
+                    <h1> Create Post </h1>
+                        <TextField
+                            value = {this.state.title}
+                            floatingLabelText="Job Title"
+                            onChange={(e)=> this.setState({title : e.target.value })}
+                            /><br />
+                        <TextField
+                            value = {this.state.salary}
+                            type='text'
+                            floatingLabelText="Salary"
+                            onChange={(e)=> this.setState({salary : e.target.value })}
+                            /><br />
+                        <TextField
+                            onChange={(e)=> this.setState({description : e.target.value })}
+                            value={this.state.description}
+                            floatingLabelText="Job Description"
+                            multiLine={true}
+                            rows={2}
+                            /><br />
+                    <RaisedButton label="Cancel " primary={true} style={{ margin: 12,}} />
+                    <RaisedButton label="Create Post" primary={true} style={{ margin: 12}} 
+                    onClick={()=>{
+                        let post = {
+                            title : this.state.title,
+                            salary : this.state.salary,
+                            description  : this.state.description,
+                            uid : firebase.auth().currentUser.uid
+                        }
+                        this.props.addPost(post);
+                        this.setState({ title : '' , salary : '', description : ''})
 
-               }}
-               
-               />
+                    }}
+                    
+                    />
             </Paper>
             
+         </div> 
+        //  : null
         );
     }
 }
 
 let mapStateToProps = (state) =>{
-    return {
+    return { 
+        role : state.CRSReducer.role,
 
     }
 }
