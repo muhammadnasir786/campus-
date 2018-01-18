@@ -52,6 +52,7 @@ class AuthEpic {
                     auth.signInWithEmailAndPassword(payload.email,payload.password)
                     .then((res)=>{
                         authenticate = true;
+                        console.log('login');
                         localStorage.setItem('uid',res.uid)
                         // console.log(res.uid)
                         // send  userdata at the end for reducer
@@ -61,15 +62,17 @@ class AuthEpic {
                         //     console.log(userData)
                         // });
                         console.log('Nasir')
-                        // return { type : AuthAction.LOGIN_USER_SUCCESSFULLY }
+                        return { type : AuthAction.LOGIN_USER_SUCCESSFULLY }
                     }).catch((err)=>{
+                        return  {type : null}
+                        console.log('not');
                         alert(err.message)
                     })
                 )
-                .map((x)=>{
-                    // return { type : null }
-                    return   authenticate ? AuthAction.loginUserSuccessfully() : {type : null}
-                })
+                // .map((x)=>{
+                //     // return { type : null }
+                //     return   authenticate ? AuthAction.loginUserSuccessfully() : {type : null}
+                // })
             })
         }
 }

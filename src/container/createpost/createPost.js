@@ -4,7 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from "react-redux";
 import CRSAction from '../../store/actions/CRSAction';
-import * as firebase from 'firebase'
+import * as firebase from 'firebase';import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+
 const style = {
   height: 400,
   width: 800,
@@ -27,7 +28,7 @@ class  CreatePost extends React.Component {
         return(
     //  this.props.role === 'company'?  
      <div>
-        <Paper style={style} zDepth={3}>
+        <Card style={style}>
                     <h1> Create Post </h1>
                         <TextField
                             value = {this.state.title}
@@ -62,7 +63,7 @@ class  CreatePost extends React.Component {
                     }}
                     
                     />
-            </Paper>
+            </Card>
             
          </div> 
         //  : null

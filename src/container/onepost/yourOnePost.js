@@ -7,6 +7,8 @@ import Avatar from 'material-ui/Avatar';
 import CRSAction from '../../store/actions/CRSAction';
 import * as firebase from "firebase";
 import TextField from 'material-ui/TextField';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+
 import { connect} from 'react-redux'
 const style = {
     height: 275,
@@ -16,6 +18,7 @@ const style = {
     textAlign: 'center',
     display: 'inline-block',
   };
+  let postKey; 
 class  YourOnePost extends React.Component {
     constructor(){
         super();
@@ -36,8 +39,9 @@ class  YourOnePost extends React.Component {
     
         
     render(){
+        postKey = this.props.postKey
         return(
-            <Paper style={style} zDepth={3}>
+            <Card style={style}>
                         <List>
                             <ListItem
                                 disabled={true}
@@ -77,15 +81,18 @@ class  YourOnePost extends React.Component {
                
              <RaisedButton label={this.state.isEdit ? 'Save Changes' :'Edit'} primary={true} style={{ margin: 12,}}
              onClick={()=>{
-                 this.setState({ title : this.props.post.title , salary : this.props.post.salary
-                , description : this.props.post.description})
+                 this.setState({ 
+                     title : this.props.post.title ,
+                      salary : this.props.post.salary,
+                       description : this.props.post.description})
                 this.state.isEdit ?  style.height = 275 : style.height = 375 ;
             
                 let postData= {
                     title : this.state.title,
                     salary : this.state.salary,
                     description : this.state.description,
-                    uid : firebase.auth().currentUser.uid
+                    uid : firebase.auth().currentUser.uid,
+                    appliedstudent  : this.props.appliedstudent
                 }
                 this.state.isEdit ? this.props.updatePost({key: this.props.postKey , postData}) :null
                  this.setState({ isEdit : !this.state.isEdit})}
@@ -97,14 +104,14 @@ class  YourOnePost extends React.Component {
                     this.props.deletePost(this.props.postKey)
             }}
             /> 
-            </Paper>
+            </Card>
             
         );
     }
 }
 let mapStateToProps = (state)=>{
     return{
-
+        appliedstudent : state.CRSReducer.allPost[postKey] !== undefined ? state.CRSReducer.allPost[postKey].appliedstudent : null
     }
 }
 let mapDispatchToProps = (dispatch)=>{

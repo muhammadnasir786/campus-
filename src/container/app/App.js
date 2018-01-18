@@ -45,28 +45,15 @@ class App extends Component {
         <Router>
           <div>
            <Navbar/>
-           <Link to='/allpost'><RaisedButton primary={true} label="AllPost" style={style}/> </Link>
-           <Link to='/yourpost'> <RaisedButton primary={true} label="Your post" style={style}/></Link>
-           <Link to='/allstudent'><RaisedButton primary={true} label="All student" style={style}/> </Link>
-           <Link to='/allcompany'> <RaisedButton primary={true} label="all company" style={style}/></Link>
-           <Link to='/createpost'><RaisedButton primary={true} label="Create post" style={style}/> </Link>
-           <Link to='/appliedpoststudent'><RaisedButton primary={true} label="Applied Post student" style={style}/> </Link>
-           <Link to='/appliedpostcompany'> <RaisedButton primary={true} label="Applied Post Company " style={style}/></Link>
-           <Link to='/profile'> <RaisedButton primary={true} label="Profile " style={style}/></Link>
-            {/* <Link to='/yourpost'>YourPost </Link>
-            <Link to='/allstudent'>allstudent </Link>
-            <Link to='/allcompany'>allcompany </Link> */}
-        {/* {this.props.role == 'company' ?  */}
-            {/* <Link to='/createpost'>createPost </Link> */}
-          {/* // : null} */}
-          {/* {this.props.role == 'student' ?  */}
-            {/* <Link to='/appliedpoststudent'>Applied Post student</Link> */}
-          {/* // : null} */}
-          {/* {this.props.role == 'student' ?  */}
-          {/* <Link to='/appliedpostcompany'>Applied Post Company </Link> */}
-          {/* // : null} */}
-
-            {/* <Link to='/profile'>profile </Link> */}
+          <Link to='/allpost'><RaisedButton primary={true} label="AllPost" style={style}/></Link> 
+          {this.props.role === 'company' ?  <Link to='/yourpost'><RaisedButton primary={true} label="Your post" style={style}/></Link>: null }
+           <Link to='/allstudent'><RaisedButton primary={true} label="All student" style={style}/></Link>
+          <Link to='/allcompany'><RaisedButton primary={true} label="all company" style={style}/></Link>
+          {this.props.role === 'company' ? <Link to='/createpost'><RaisedButton primary={true} label="Create post" style={style}/></Link>: null }
+          {this.props.role === 'student' ? <Link to='/appliedpoststudent'><RaisedButton primary={true} label="Applied Post student" style={style}/></Link>: null }
+          {this.props.role === 'company' ? <Link to='/appliedpostcompany'><RaisedButton primary={true} label="Applied Post Company " style={style}/></Link>: null }
+          <Link to='/profile'><RaisedButton primary={true} label="Profile " style={style}/></Link>
+           
             <Route path='/profile' component={Profile}/>
             <Route path='/allpost' component={AllPost} />
             <Route path='/yourpost' component={YourPost} />

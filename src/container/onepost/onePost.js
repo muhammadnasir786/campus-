@@ -35,7 +35,7 @@ class  OnePost extends React.Component {
                                     <Avatar src={require('../sidebar/avatar.png')} />
                                 }
                             >
-                                {this.props.allUser[this.props.post.uid].name}
+                                {this.props.allUser[this.props.post.uid] != undefined ? this.props.allUser[this.props.post.uid].name : null}
                             </ListItem>
                         </List><hr/>
                 <p> Job Titile  = <b>{this.props.post.title}</b></p>

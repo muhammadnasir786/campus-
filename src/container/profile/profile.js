@@ -42,30 +42,33 @@ class Profile extends React.Component {
 
     componentWillReceiveProps(nextProps){
         // get new props and set state({  })
+        // console.log(nextProps);
         this.setState({
-            name: nextProps.user.name,
-            phone: nextProps.user.phone,
-            uni : nextProps.user.uni,
-            email: nextProps.user.email,
-            password: nextProps.user.password,
-            role: nextProps.user.role,
-            matricPer : nextProps.user.matricPer,
-            matricGrade : nextProps.user.matricGrade,
-            interGrade : nextProps.user.interGrade,
-            interPer : nextProps.user.interPer,
-            city : nextProps.user.city,
-            country : nextProps.user.country,
-        })
-       
-    }
-    render() {
+                name: nextProps.user.name,
+                phone: nextProps.user.phone,
+                uni : nextProps.user.uni,
+                email: nextProps.user.email,
+                password: nextProps.user.password,
+                role: nextProps.user.role,
+                matricPer : nextProps.user.matricPer,
+                matricGrade : nextProps.user.matricGrade,
+                interGrade : nextProps.user.interGrade,
+                interPer : nextProps.user.interPer,
+                city : nextProps.user.city,
+                country : nextProps.user.country,
+            })
+            // console.log(this.props.user);
+            
+        }
+        render() {
+            // console.log(firebase.auth().currentUser.uid);
         console.log(this.props.user)
         return (
-            <div>
+            <Card style={style}>
                 <h1>
                 <CardTitle title="Profile" subtitle="View OR Update Your Profile" />
                 </h1>
-                <Paper  style={style} zDepth={3}>
+                <Card>
                 <div>
                 {this.props.role === 'student' ? 
                     <div>
@@ -163,7 +166,7 @@ class Profile extends React.Component {
                                                     
                                                     this.setState({isEdit : !this.state.isEdit})
                                                 }else{
-                                                    console.log('Done 167')                                                    
+                                                    // console.log('Done 167')                                                    
                                                     let profileData = {
                                                         name: this.state.name,
                                                         phone: this.state.phone,
@@ -177,7 +180,7 @@ class Profile extends React.Component {
                                                         interPer : this.state.interPer,
                                                         city : this.state.city,
                                                         country : this.state.country
-                                                        
+
                                                     }
                                                     this.props.updateProfile(profileData)
                                                     // update profile here 
@@ -277,8 +280,8 @@ class Profile extends React.Component {
                     </div> : null}
                 </div>
 
-                </Paper>
-            </div>
+                </Card>
+            </Card>
         );
     }
 }

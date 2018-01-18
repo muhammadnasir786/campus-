@@ -14,12 +14,22 @@ const style = {
     fontWeight: 'bold'
 }
 class AppliedPostStudent extends Component {
-
+    
     
     render() {
+        let userid = firebase.auth().currentUser.uid;
+        // console.log(userid);
+        // console.log(this.props.allUsers[userid] != undefined ? this.props.allUsers[userid].appliedPost : null);
+        // console.log(this.props.allUsers.userid.appliedPost);
         let AllAppliedPost ;
         let postKey = [] ;
-        (this.props.userApplyPost !== undefined) ? postKey =(Object.values(this.props.userApplyPost)) : null
+        // (this.props.allUsers[firebase.auth().currentUser.uid] !== undefined) ?
+        // postKey = (Object.values(this.props.allUsers[firebase.auth().currentUser.uid].appliedPost)) : null
+        if(this.props.allUsers[firebase.auth().currentUser.uid] !== undefined){
+            if(this.props.allUsers[firebase.auth().currentUser.uid].appliedPost !== undefined ){
+                postKey = (Object.values(this.props.allUsers[firebase.auth().currentUser.uid].appliedPost))
+            }
+        }
        AllAppliedPost =  postKey.map((postKey,i)=>{
           let post = (this.props.allPost[postKey]);
           console.log(post)
@@ -31,10 +41,10 @@ class AppliedPostStudent extends Component {
                                 <ListItem
                                     disabled={true}
                                     leftAvatar={
-                                        <Avatar src={require('../sidebar/avatar.png')} />
+                                        <Avatar src='https://s3.amazonaws.com/images.seroundtable.com/google-g-groupon-g-1441368832.gif' />
                                     }
                                     >
-                                    {this.props.allUsers !== undefined ? this.props.allUsers[post.uid].name: null }
+                                    {this.props.allUsers[post.uid] !== undefined ? this.props.allUsers[post.uid].name: null }
                                 </ListItem>
                             </List><hr />
                             <p> Job Titile  = <b>{post.title}</b></p>
@@ -68,8 +78,8 @@ let mapStateToProps = (state)=>{
         allPost  :  state.CRSReducer.allPost,
         role : state.CRSReducer.role,
         user : state.CRSReducer.allUsers[firebase.auth().currentUser.uid],
-        allUsers : state.CRSReducer.allUsers,
-        userApplyPost : state.CRSReducer.[firebase.auth().currentUser.uid]
+        allUsers : state.CRSReducer.allUsers
+        // userApplyPost : state.CRSReducer.allUsers[firebase.auth().currentUser.uid]
 
     }
 }

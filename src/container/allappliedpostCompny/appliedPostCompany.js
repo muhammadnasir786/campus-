@@ -47,11 +47,8 @@ class AppliedPostCompany extends Component {
                 let studentUids = [];
                 (post.appliedstudent !== undefined) ? studentUids = Object.values(post.appliedstudent) : null
                 return (
-                    <div key={postkey+''}>
-                        {/* <OnePost key={postKy+'AppliedPostStudent'} 
-                             postKey={postKy+'AppliedPostStudent'} 
-                             post={post}
-                             role={this.props.role}/> */}
+                    <div key={postKy}>
+                       
                         <Card style={{ border : '2px solid brown' , margin : 20 , padding : 20}}>
                             <List>
                                 <ListItem
@@ -69,17 +66,17 @@ class AppliedPostCompany extends Component {
                             <hr/>
                             {studentUids.map((uid, i) => {
                                 let oneStudent = this.props.allUsers[uid];
-                                console.log(oneStudent);
-                                return <div key={uid+i}>
-                                    <div  style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                            <div>{oneStudent.name}</div>
-                                            <div>{oneStudent.email}</div>
-                                            <div>{oneStudent.phone}</div>
-                                            <div>{oneStudent.uni}</div>
-                                            <div>{oneStudent.country}</div>
-                                            <div>{oneStudent.city}</div>
-                                    </div>
-                                    <hr/>
+                                // console.log(oneStudent);
+                                return <div key={i}>
+                                            <div  style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <div>{oneStudent.name}</div>
+                                                    <div>{oneStudent.email}</div>
+                                                    <div>{oneStudent.phone}</div>
+                                                    <div>{oneStudent.uni}</div>
+                                                    <div>{oneStudent.country}</div>
+                                                    <div>{oneStudent.city}</div>
+                                            </div>
+                                            <hr/>
                                 </div>
                                 
                             })}
