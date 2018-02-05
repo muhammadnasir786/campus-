@@ -30,7 +30,7 @@ class SideBar extends React.Component {
           <div>
             <List>
               <Subheader> <h2> Administrator</h2></Subheader>
-              <Avatar style={{ width: '150', height: '150' }} src={require('./avatar.png')} />
+              <Avatar style={{ width: '150', height: '150' }} src={'https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png'} />
               <Link to='/profile'><ListItem
                 onClick={() => { this.props.handleClose(); }}
                 primaryText="Profile"

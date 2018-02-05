@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "campus-recuritment-system",
+  "private_key_id": "9ce7edf740f3bed43d3e566375aa56507593c080",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCqhzhabdvG8bcd\nBf6AebxP+TpqFvj+BWc0G/rjs4CPnvijEi7beWOpuuayUaTCwOP7l75pjOijtLUk\nsisNLfIyILHlD+lov5UQ9SXVBM7pjLaZ57r9vN7HPvX1QJLn22acrm5RSVa631eC\nsOr35YRbEQHys6Eye7JSjeTlm3d9ktIry6WMD7lxo9UueDHKQgnFbf/zgAdVBSRn\ngqedVf/eBL78zjL+vt4DApmSbfNzXuuyObzL+PGz+LpW/ZrYFomBGxvgu1RJxigg\nE1oqTtQ+2I7upv21W+M7+lg8o8yEovHEyhoEXhbvvjIogVCR3XjvntfWMExx3PAZ\nCArgTT9jAgMBAAECggEAQbVrBIVSa31WZsuZfp3p7xME7D4/4Xnpg43Ihhbz0eOa\nwRNPlOhYe9116X5GM3kqIBcfmwJd3j7SkfpJVoG+0owAoFgaQ2+XG/qqgkOhCyNa\ndUFyrzUozrO3CLLCKK9FAdjAz3eoAMfwq35KfA0njAOosYF/+rjpRKBCdCsMxwi7\nKQ9Cmahz+yW0Fmf1f8zUqqARO4FfYKBB+7FK9oqD/A6MfwYq4xjr9/CwaZVgtaA0\njNBpe809PiISXGEaxtdpIt+p0+iLJT0X80kBCT9X8v3vAPn7fKbUjVAsLjOEnDjz\n3mRCieN1K+qZJ7t4k4jDiwYuOpJh+uqVH7mCwHDuqQKBgQDn13W/TzpGg5w0ZWyv\nUeSBtznl05jxxreND2LDqhW5tfARlvC98SlmlAzVU5K2n8nAC/7hnq64q/XvorC6\nasjJ1ExhBTcgmv6/tGJsEmAop//ilt6iZuyZJeE3AL9BapPoQQqk9WP3TdlLrAEZ\nKsTcMVrzPvEfFRMc5wVO7TKmXwKBgQC8TC5JK2BqjNsU+BUCZYbWMKSbxCH5Pfpb\nXJelqupyBoVB/xM8sk79l+NiRlw2gC7fQ4W3yPkShpApwhpMr1Y+fbs/s9Me/pad\nWCBbcXOw/TR6RnALhL9sbi9V/DkFMwqv8nelAcc2f6RlMMIGfVq84YailBkV2cwV\n0Lcs3E7dfQKBgDsT0FFbowHs75T6c2OJfqz/P6Ws8cBKXuN3FDe/06FrFy2kRNxh\n46bb+xkxHqWiugpSBDUB9ovgZd8Wmeom49tqWbwvVAje9iNrl9jqJc62YKIgx8Ki\nb4/m8yjM6++DdQUt7cRzM3IFSGXcArujBl8FxKNPWqoM+L3YsKWYE9wJAoGAO2e9\nYpAwxuzRYXgzCKKHO6P1Cr+CCGQpTBGWNkoJ1ReBiySyKQAIM7Frp2GTTg56uy1O\nToE1M0cIzGPUcEUQ7H42SQ6umKSxV8qpyq+sVDZODBWU281xpv/MJ1B/nMhRotjY\nLlK1SthSQSp0zB9YNSbhlwEqON6RqIBEif6nUvECgYA8iWNNpezk1Va+jOGcxOy7\n4IDRK8KCidfItztghPGlfqxCSEzZ+Qcuv4/iCDzOOjRRoTHv6rd3m+GpoQ1rOTUL\n/HRNnw2+xj6OTf/RJl+o3UcHQMZ10nnTXr7E0BdJ/e4fCdE4yOHFu4doJ5/4Uhwh\nsOZf+2rbBNHc3Pe90Oac9Q==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-c01jr@campus-recuritment-system.iam.gserviceaccount.com",
+  "client_id": "108699732590896269826",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-c01jr%40campus-recuritment-system.iam.gserviceaccount.com"
+}

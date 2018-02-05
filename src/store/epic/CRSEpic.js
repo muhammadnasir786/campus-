@@ -2,23 +2,12 @@ import {
     Observable
 } from 'rxjs'
 import CRSAction from "../actions/CRSAction";
-import * as firebase from 'firebase'
-  // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyC6id6mjaUbJ6ADnQHIpAz3Q1MM58nHuK4",
-//     authDomain: "campus-recuritment-system.firebaseapp.com",
-//     databaseURL: "https://campus-recuritment-system.firebaseio.com",
-//     projectId: "campus-recuritment-system",
-//     storageBucket: "",
-//     messagingSenderId: "922873742971"
-//   };
-//   firebase.initializeApp(config);
+import * as firebase from 'firebase';
+import config from './config';
 
 const postRef = firebase.database().ref('posts');
 const userRef  = firebase.database().ref('users');
 const ref = firebase.database().ref('/');
-
-// postRef.push({name : 'Nasir'})
 export default class CRSEpic {
 
 
@@ -32,7 +21,9 @@ export default class CRSEpic {
                 return Observable.fromPromise(
                     userRef.child(`/${firebase.auth().currentUser.uid}/appliedPost`).push(payload).then(()=>{
                         // alert('Post Created Successfully') payload = PostKey
-                        postRef.child(`${payload}/appliedstudent/`).push(firebase.auth().currentUser.uid);
+                        postRef.child(`${payload}/appliedstudent/`).push(firebase.auth().currentUser.uid).then(()=>{
+                             
+                        });
                     }).catch((re)=>{ console.log(re.message)})  
                 )
                     .map((x) => {

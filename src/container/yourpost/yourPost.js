@@ -6,7 +6,10 @@ import  * as firebase from "firebase";
 class YourPost extends Component {
     render() {
         return (
+           (this.props.role !== 'student') ? 
+
             <div>
+
                 <h1>Your Post Posts</h1><hr/>
                 {Object.keys(this.props.allPost).map((val,index)=>{
                     let post ; 
@@ -19,13 +22,14 @@ class YourPost extends Component {
                      
                     
                 })}
-            </div>
+            </div> : null 
         );
     }
 }
 
 let mapStateToProps = (state)=>{
     return{
+        role : state.CRSReducer.role,
         allUser : state.CRSReducer.allUsers,
         allPost : state.CRSReducer.allPost
     }

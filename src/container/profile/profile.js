@@ -195,8 +195,8 @@ class Profile extends React.Component {
                                 </Card>
                             </div>
                     </div> : null}
-                    {this.props.role === 'company' ? <div>
-                        <h3>For Company</h3>
+                    {this.props.role !== 'student' ? <div>
+                        <h3>For {this.props.role} </h3>
                             <div>
                                 <Card style={{ border: '2px solid brown' , margin : 20 }}>
                                     <br />

@@ -25,7 +25,7 @@ class Navbar extends React.Component {
             <div>
                 <AppBar
                     onLeftIconButtonClick={this.props.isLogin ? this.handleToggle : () => { alert('Login First') }}
-                    title="Campus Resuritment System"
+                    title="Campus Rescuritment System"
                     // iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconElementRight={<FlatButton onClick={ this.props.isLogin ? ()=>{
                         firebase.auth().signOut().then(()=>{

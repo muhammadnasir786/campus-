@@ -32,7 +32,7 @@ class  OnePost extends React.Component {
                             <ListItem
                                 disabled={true}
                                 leftAvatar={
-                                    <Avatar src={require('../sidebar/avatar.png')} />
+                                    <Avatar src={('https://s3.amazonaws.com/images.seroundtable.com/google-g-groupon-g-1441368832.gif')} />
                                 }
                             >
                                 {this.props.allUser[this.props.post.uid] != undefined ? this.props.allUser[this.props.post.uid].name : null}

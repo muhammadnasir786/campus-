@@ -26,10 +26,10 @@ class  CreatePost extends React.Component {
     }
     render(){
         return(
-    //  this.props.role === 'company'?  
-     <div>
-        <Card style={style}>
-                    <h1> Create Post </h1>
+     this.props.role === 'company' ||  this.props.role === 'admin' ?  
+        <div>
+              <Card style={style}>
+                          <h1> Create Post </h1>
                         <TextField
                             value = {this.state.title}
                             floatingLabelText="Job Title"
@@ -66,7 +66,7 @@ class  CreatePost extends React.Component {
             </Card>
             
          </div> 
-        //  : null
+         : null
         );
     }
 }

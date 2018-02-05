@@ -58,16 +58,12 @@ class AppliedPostStudent extends Component {
         //   console.log(post); 
         })
         return (
+            this.props.role !== 'admin' || this.props.role !== 'company'  ?
             <div >
                 <h1>Applied Post Student</h1><hr/>
-                {
-                AllAppliedPost
-                    // console.log(this.props.userApplyPost)
-                
-
-                }
+                {AllAppliedPost}
                     
-            </div>
+            </div> : null
         );
     }
 }

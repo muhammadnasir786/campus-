@@ -54,7 +54,7 @@ class AppliedPostCompany extends Component {
                                 <ListItem
                                     disabled={true}
                                     leftAvatar={
-                                        <Avatar src={require('../sidebar/avatar.png')} />
+                                        <Avatar src={('https://cdn2.iconfinder.com/data/icons/avatar-2/512/Fred_man-512.png')} />
                                     }
                                 >
                                     {this.props.allUsers[post.uid].name}
@@ -88,13 +88,14 @@ class AppliedPostCompany extends Component {
 
         // console.log(this.state.value)
         return (
-            <div>
+            this.props.role !== 'student'  ?
+            <div> 
                 <div>
-                    <h1>Applied post Company</h1>
+                    <h1>Applied post</h1>
                    
                     {AllPostCompany}
                 </div>
-            </div>
+            </div> : null
         )
     }
 }

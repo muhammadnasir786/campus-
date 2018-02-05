@@ -59,7 +59,6 @@ const cardStyle = {
                                                     <hr/>
                                             <p>Email = <span>{user.email}</span></p>
                                             <p>Role = <span>{user.role}</span></p>
-                                            <p>University = <span>{user.uni}</span></p>
                                             <p>Phone Number = <span>{user.phone}</span></p>
                                             <p>Country = <span>{user.country}</span></p>
                                             <p>City = <span>{user.city}</span></p>
