@@ -3,14 +3,15 @@ import YourOnePost from '../onepost/yourOnePost'
 import { connect} from "react-redux";
 import CRSAction from '../../store/actions/CRSAction';
 import  * as firebase from "firebase";
+import { Card, CardActions, CardHeader,CardTitle, CardText } from 'material-ui/Card';
+
 class YourPost extends Component {
     render() {
         return (
            (this.props.role !== 'student') ? 
-
-            <div>
-
-                <h1>Your Post Posts</h1><hr/>
+           <Card>
+           <CardTitle title="Your Posts" subtitle="You can Edit Update OR Delete Your Post" />
+       
                 {Object.keys(this.props.allPost).map((val,index)=>{
                     let post ; 
                 if(this.props.allPost[val].uid === firebase.auth().currentUser.uid)
@@ -22,7 +23,7 @@ class YourPost extends Component {
                      
                     
                 })}
-            </div> : null 
+            </Card> : null 
         );
     }
 }

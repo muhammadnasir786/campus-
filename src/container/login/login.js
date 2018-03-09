@@ -43,7 +43,7 @@ class LoginCard extends React.Component {
   render() {
     return (
 
-      <Card style={{ border: '2px solid brown' }}>
+      <Card style={{margin : '50px' , border : '1px solid gray' } } zDepth={3}>
         <br />
         <CardTitle title="Access Your Account" subtitle="Login Here !" />
         <br />

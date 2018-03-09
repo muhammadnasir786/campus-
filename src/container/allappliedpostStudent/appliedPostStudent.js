@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import * as firebase from 'firebase';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardActions, CardHeader,CardTitle, CardText } from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 
 
 const style = {
     margin : 10,
-    border : '2px solid brown',
-    fontWeight: 'bold'
+    border : '1px solid gray',
+    // fontWeight: 'bold'
 }
 class AppliedPostStudent extends Component {
     
@@ -35,8 +35,7 @@ class AppliedPostStudent extends Component {
           console.log(post)
           return (
                     post !== undefined ?
-                        <Card key={postKey+'mmm'} style={style}>
-
+                        <Card key={postKey+'mmm'} style={style} zDepth={3}>
                              <List>
                                 <ListItem
                                     disabled={true}
@@ -59,11 +58,12 @@ class AppliedPostStudent extends Component {
         })
         return (
             this.props.role !== 'admin' || this.props.role !== 'company'  ?
-            <div >
-                <h1>Applied Post Student</h1><hr/>
+            <Card >
+                <CardTitle title="Applied Post " subtitle="Applied Post Student" />
+            
                 {AllAppliedPost}
                     
-            </div> : null
+            </Card> : null
         );
     }
 }

@@ -15,9 +15,9 @@ const style = {
 const cardStyle = {
     margin: 25,
     padding: 0,
-    border: '2px solid brown',
+    border: '1px solid gray',
     fontSize : 16,
-    fontWeight : 'normal'
+    // fontWeight : 'normal'
 }
 class OneProfile extends React.Component {
 
@@ -26,7 +26,7 @@ class OneProfile extends React.Component {
         // console.log(user.userPhotoURL)
     
         return user ?  (
-            <Card style={cardStyle}>
+            <Card style={cardStyle} zDepth={3}>
                          <List>
                             <ListItem
                                 disabled={true}
@@ -36,16 +36,16 @@ class OneProfile extends React.Component {
                          </ListItem>
                         </List>
                         <hr/>
-                <p>Email = <span>{user.email}</span></p>
-                <p>Role = <span>{user.role}</span></p>
-                <p>University = <span>{user.uni}</span></p>
-                <p>Phone Number = <span>{user.phone}</span></p>
-                <p>Country = <span>{user.country}</span></p>
-                <p>City = <span>{user.city}</span></p>
-                <p>Matric % = <span>{user.matricPer}</span></p>
-                <p>Matric Grade = <span>{user.matricGrade}</span></p>
-                <p>Inter % = <span>{user.matricPer}</span></p>
-                <p>Inter Grade = <span>{user.matricGrade}</span></p>
+                <p>Email : <span>{user.email}</span></p>
+                <p>Role : <span>{user.role}</span></p>
+                <p>University : <span>{user.uni}</span></p>
+                <p>Phone Number : <span>{user.phone}</span></p>
+                <p>Country : <span>{user.country}</span></p>
+                <p>City : <span>{user.city}</span></p>
+                <p>Matric % : <span>{user.matricPer}</span></p>
+                <p>Matric Grade : <span>{user.matricGrade}</span></p>
+                <p>Inter % : <span>{user.matricPer}</span></p>
+                <p>Inter Grade : <span>{user.matricGrade}</span></p>
             </Card>
         ) : null
     }

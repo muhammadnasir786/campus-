@@ -1,12 +1,13 @@
 import * as firebase from 'firebase';
   // Initialize Firebase
+  // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyC6id6mjaUbJ6ADnQHIpAz3Q1MM58nHuK4",
-    authDomain: "campus-recuritment-system.firebaseapp.com",
-    databaseURL: "https://campus-recuritment-system.firebaseio.com",
-    projectId: "campus-recuritment-system",
-    storageBucket: "campus-recuritment-system.appspot.com",
-    messagingSenderId: "922873742971"
+    apiKey: "AIzaSyDeUugsDjs58LfTwJITLa7vqSV-tC7H-sY",
+    authDomain: "hakatoon-f735b.firebaseapp.com",
+    databaseURL: "https://hakatoon-f735b.firebaseio.com",
+    projectId: "hakatoon-f735b",
+    storageBucket: "hakatoon-f735b.appspot.com",
+    messagingSenderId: "796370129000"
   };
   firebase.initializeApp(config);
   export default config ;

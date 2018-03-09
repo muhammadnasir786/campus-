@@ -7,12 +7,13 @@ import CRSAction from '../../store/actions/CRSAction';
 import * as firebase from 'firebase';import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 
 const style = {
-  height: 400,
-  width: 800,
-  margin: 20,
+//   height: 400,
+//   width: 800,
+  margin: 30,
 //   marginBottom: '900',
-  textAlign: 'center',
-  display: 'inline-block',
+//   textAlign: 'center',
+//   display: 'inline-block',
+border : '1px solid gray'
 };
 
 class  CreatePost extends React.Component {
@@ -28,8 +29,8 @@ class  CreatePost extends React.Component {
         return(
      this.props.role === 'company' ||  this.props.role === 'admin' ?  
         <div>
-              <Card style={style}>
-                          <h1> Create Post </h1>
+              <Card style={style} zDepth={3}>
+              <CardTitle title="Create Job Post " subtitle="Create Job Post" /> <hr/>
                         <TextField
                             value = {this.state.title}
                             floatingLabelText="Job Title"

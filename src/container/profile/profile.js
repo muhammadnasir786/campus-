@@ -7,11 +7,11 @@ import { connect } from "react-redux";
 import * as firebase from "firebase";
 import CRSAction from '../../store/actions/CRSAction'
 const style = {
-    height: 830,
-    width: 630,
+    // height: 830,
+    // width: 630,
     margin: 20,
-    textAlign: 'center',
-    display: 'inline-block',
+    // textAlign: 'center',
+    // display: 'inline-block',
 };
 
 
@@ -36,13 +36,28 @@ class Profile extends React.Component {
         }
      
     }
-    componentDidMount(){
-        
+    componentWillMount(){
+    //    this.props.user !== undefined ? 
+    //     this.setState({
+    //         name: this.props.user.name,
+    //         phone: this.props.user.phone,
+    //         uni : this.props.user.uni,
+    //         email: this.props.user.email,
+    //         password: this.props.user.password,
+    //         role: this.props.user.role,
+    //         matricPer : this.props.user.matricPer,
+    //         matricGrade : this.props.user.matricGrade,
+    //         interGrade : this.props.user.interGrade,
+    //         interPer : this.props.user.interPer,
+    //         city : this.props.user.city,
+    //         country : this.props.user.country,
+    //     }) : null
     }
 
     componentWillReceiveProps(nextProps){
         // get new props and set state({  })
         // console.log(nextProps);
+        nextProps.user !== undefined ? 
         this.setState({
                 name: nextProps.user.name,
                 phone: nextProps.user.phone,
@@ -56,8 +71,8 @@ class Profile extends React.Component {
                 interPer : nextProps.user.interPer,
                 city : nextProps.user.city,
                 country : nextProps.user.country,
-            })
-            // console.log(this.props.user);
+            }) : null
+            console.log(this.props.user);
             
         }
         render() {
@@ -65,18 +80,18 @@ class Profile extends React.Component {
         console.log(this.props.user)
         return (
             <Card style={style}>
-                <h1>
-                <CardTitle title="Profile" subtitle="View OR Update Your Profile" />
-                </h1>
+                
+                    <CardTitle title="Profile" subtitle="View OR Update Your Profile" />
+                
                 <Card>
                 <div>
                 {this.props.role === 'student' ? 
                     <div>
-                        <h3>For Student</h3>
+                     
                             <div>
-                                <Card style={{ border: '1px solid brown' , margin : 20 , marginTop : '-20' }}>
+                                <Card style={{ border: '1px solid gray' , margin : 20 , marginTop : '-20' }}>
                                     <br />
-                                    <CardTitle title="Register Your Account as a Student" subtitle="SignUp Here !" />
+                                    <CardTitle title="Student" subtitle="You can Edit OR Update Your Profile  !" />
                                     <br />
                                     <TextField
                                         disabled={this.state.isEdit}
@@ -125,7 +140,7 @@ class Profile extends React.Component {
                                     /><br />
 
                                     <br />
-                                    <h2>Marks Details</h2>
+                                    <CardTitle title="Marks Details"></CardTitle>
                                     <TextField
                                         floatingLabelText='Matric Percentage'
                                         value={this.state.matricPer}
@@ -157,17 +172,32 @@ class Profile extends React.Component {
 
 
                                     <CardActions>
-                                        <RaisedButton label="Cancel" style={{ margin : 12}}
-                                            onClick={this.props.cancel}
-                                        />
                                         <RaisedButton label={this.state.isEdit ? 'Edit' : 'Update Profile'}
                                             onClick={() => {
                                                 if(this.state.isEdit){
                                                     
                                                     this.setState({isEdit : !this.state.isEdit})
                                                 }else{
-                                                    // console.log('Done 167')                                                    
-                                                    let profileData = {
+                                                    // console.log('Done 167') 
+                                                    let profileData
+                                                    this.props.allUsers[firebase.auth().currentUser.uid].appliedPost !== undefined ?                                                   
+                                                     profileData = {
+                                                        name: this.state.name,
+                                                        phone: this.state.phone,
+                                                        uni : this.state.uni,
+                                                        email: this.state.email,
+                                                        password: this.state.password,
+                                                        role: this.state.role,
+                                                        matricPer : this.state.matricPer,
+                                                        matricGrade : this.state.matricGrade,
+                                                        interGrade : this.state.interGrade,
+                                                        interPer : this.state.interPer,
+                                                        city : this.state.city,
+                                                        country : this.state.country,
+                                                        appliedPost : this.props.allUsers[firebase.auth().currentUser.uid].appliedPost
+
+                                                    } :
+                                                    profileData = {
                                                         name: this.state.name,
                                                         phone: this.state.phone,
                                                         uni : this.state.uni,
@@ -180,8 +210,8 @@ class Profile extends React.Component {
                                                         interPer : this.state.interPer,
                                                         city : this.state.city,
                                                         country : this.state.country
+                                                    } 
 
-                                                    }
                                                     this.props.updateProfile(profileData)
                                                     // update profile here 
                                                     this.setState({isEdit : !this.state.isEdit})
@@ -195,12 +225,13 @@ class Profile extends React.Component {
                                 </Card>
                             </div>
                     </div> : null}
-                    {this.props.role !== 'student' ? <div>
-                        <h3>For {this.props.role} </h3>
+                    {this.props.role !== 'student' ? 
+                    <Card style={{ border : '1px solid gray'}} zDepth={3}>
+                    
                             <div>
-                                <Card style={{ border: '2px solid brown' , margin : 20 }}>
+                                <Card style={{}}>
                                     <br />
-                                    <CardTitle title="SignUp as a Company" subtitle="SignUp Here !" />
+                                    <CardTitle title="Company" subtitle="You can Edit OR Update Your Profile  !" />
                                     <br />
                                     <TextField
                                         value={this.state.name}
@@ -243,17 +274,18 @@ class Profile extends React.Component {
 
 
                                     <CardActions>
-                                        <RaisedButton label="Cancel" style={{margin : 12}}
-                                            onClick={this.props.cancel}
-                                            />
                                         <RaisedButton label={this.state.isEdit ?'Edit' : 'Update Profile'}
                                             onClick={() => {
                                                 if(this.state.isEdit){
+                                                    alert('asdas')
                                                 
                                                     this.setState({isEdit : !this.state.isEdit})
                                                 }else{
-                                                    
-                                                    let profileData = {
+                                                    alert('asdasd')
+                                                    console.log(this.props.allUsers[firebase.auth().currentUser.uid].appliedPost);
+                                                    let profileData
+                                                    this.props.allUsers[firebase.auth().currentUser.uid].appliedPost !== undefined ?
+                                                     profileData = {
                                                         name: this.state.name,
                                                         age: this.state.age,
                                                         phone: this.state.phone,
@@ -262,9 +294,21 @@ class Profile extends React.Component {
                                                         password: this.state.password,
                                                         role: this.state.role,
                                                         city : this.state.city,
-                                                        country : this.state.country
-                                                        
-                                                    }
+                                                        country : this.state.country,
+                                                        appliedPost : this.props.allUsers[firebase.auth().currentUser.uid].appliedPost
+                                                    } : 
+                                                    profileData = {
+                                                        name: this.state.name,
+                                                        age: this.state.age,
+                                                        phone: this.state.phone,
+                                                        uni : this.state.uni,
+                                                        email: this.state.email,
+                                                        password: this.state.password,
+                                                        role: this.state.role,
+                                                        city : this.state.city,
+                                                        country : this.state.country,
+                                                    } 
+
                                                     console.log('done')
                                                     // update Profile eher
                                                     this.setState({isEdit : !this.state.isEdit})
@@ -277,7 +321,7 @@ class Profile extends React.Component {
                                     </CardActions>
                                 </Card>
                             </div>
-                    </div> : null}
+                    </Card> : null}
                 </div>
 
                 </Card>
@@ -288,7 +332,8 @@ class Profile extends React.Component {
  let mapStateToProps = (state)=>{
      return {
         user : state.CRSReducer.allUsers[firebase.auth().currentUser.uid],
-        role : state.CRSReducer.role
+        role : state.CRSReducer.role,
+        allUsers : state.CRSReducer.allUsers
      }
  }
  let mapDispatchToProps = (dispatch)=>{

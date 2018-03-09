@@ -10,17 +10,6 @@ import {
 import { connect } from 'react-redux';
 import Navbar from "../../components/navbar/navbar";
 
-let mapStateToProps = (state) => {
-    return {
-        isLogin: state.AuthReducer.isLogin,
-        registerShow: state.AuthReducer.registerShow
-    }
-}
-let mapDispatchToProps = (dispatch) => {
-    return {
-
-    }
-}
 class Main extends Component {
     render() {
         return (
@@ -51,6 +40,17 @@ class Main extends Component {
 
             </div>
         )
+    }
+}
+let mapStateToProps = (state) => {
+    return {
+        isLogin: state.AuthReducer.isLogin,
+        registerShow: state.AuthReducer.registerShow
+    }
+}
+let mapDispatchToProps = (dispatch) => {
+    return {
+
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

@@ -8,7 +8,7 @@ import {
     TableRowColumn
 } from 'material-ui/Table';
 import Avatar from 'material-ui/Avatar';
-import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardActions, CardHeader, CardText , CardTitle} from 'material-ui/Card';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
@@ -23,9 +23,9 @@ const style = {
 const cardStyle = {
     margin: 25,
     padding: 0,
-    border: '2px solid brown',
+    border: '1px solid gray',
     fontSize : 16,
-    fontWeight : 'normal'
+    // fontWeight : 'normal'
 }
 
  class CompanyList extends Component {
@@ -40,14 +40,14 @@ const cardStyle = {
         // console.log(this.state.value)
         return (
         <div>
-            <div>
-              <h1>All Company List</h1>
-
+            <Card style={{ border : '1px solid gray' } } zDepth={3}>
+            <CardTitle title="All Company List " subtitle="All Company List in System" /> 
+              {/* <h1>All Company List</h1> */}
                     {Object.keys(this.props.allUsers).map((val,index)=>{
                           let user ;
                           this.props.allUsers[val].role === 'company' ? user = this.props.allUsers[val] : null
 
-                                   return user ?  <Card key={val} style={cardStyle}>
+                                   return user ?  <Card key={val} style={cardStyle} zDepth={3}>
                                                     <List>
                                                         <ListItem
                                                             disabled={true}
@@ -66,7 +66,7 @@ const cardStyle = {
                       })}   
                                    
                    
-            </div>
+            </Card>
         </div> 
         )
     }

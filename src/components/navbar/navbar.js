@@ -23,64 +23,64 @@ class Navbar extends React.Component {
         var provider = new firebase.auth.FacebookAuthProvider();
         return (
             <div>
-                <AppBar
+                <AppBar style={{ backgroundColor: '#4CAF50' }} zDepth={2}
                     onLeftIconButtonClick={this.props.isLogin ? this.handleToggle : () => { alert('Login First') }}
                     title="Campus Rescuritment System"
                     // iconClassNameRight="muidocs-icon-navigation-expand-more"
-                    iconElementRight={<FlatButton onClick={ this.props.isLogin ? ()=>{
-                        firebase.auth().signOut().then(()=>{
+                    iconElementRight={<FlatButton onClick={this.props.isLogin ? () => {
+                        firebase.auth().signOut().then(() => {
                             alert('Logout Success Full');
                             this.props.logout();
-                        }).catch(()=>{
+                        }).catch(() => {
                             alert('Error')
                         })
-                    } : 
-                    () => {
-                        firebase.auth().signInWithPopup(provider).then( (result) =>{
-                            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-                            var token = result.credential.accessToken;
-                            // The signed-in user info.
-                            var user = result.user;
-                            console.log(token)
-                            console.log(user)
-                            // ...
-                            let userData  = {
-                                name : user.displayName,
-                                email : user.email,
-                                phoneNumber :user.phoneNumber,
-                                photoURL : user.photoURL,
-                                address : null,
-                                age : 20
-                            }
+                    } :
+                        () => {
+                            firebase.auth().signInWithPopup(provider).then((result) => {
+                                // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                                var token = result.credential.accessToken;
+                                // The signed-in user info.
+                                var user = result.user;
+                                console.log(token)
+                                console.log(user)
+                                // ...
+                                let userData = {
+                                    name: user.displayName,
+                                    email: user.email,
+                                    phoneNumber: user.phoneNumber,
+                                    photoURL: user.photoURL,
+                                    address: null,
+                                    age: 20
+                                }
 
-                             firebase.database().ref('/').child(`users/${user.uid}/`).set(userData).then(()=>{
-                            
-                                 alert('User Login Successfully')
-                             }).catch((e)=>{
-                                alert(e.message)
-                             });
-                            this.props.loginSuccess();
-                        
+                                firebase.database().ref('/').child(`users/${user.uid}/`).set(userData).then(() => {
+
+                                    alert('User Login Successfully')
+                                }).catch((e) => {
+                                    alert(e.message)
+                                });
+                                this.props.loginSuccess();
 
 
-                        }).catch( (error) =>{
-                            // Handle Errors here.
-                            var errorCode = error.code;
-                            var errorMessage = error.message;
-                            // The email of the user's account used.
-                            var email = error.email;
-                            // The firebase.auth.AuthCredential type that was used.
-                            var credential = error.credential;
-                            console.log(error.code)
-                            console.log(error.message)
-                            // ...
-                        });
-                    }}
-                    
-                     label={this.props.isLogin ? 'Logout' :  'Login With Facebook'}
-                    
-                    
-                     />}
+
+                            }).catch((error) => {
+                                // Handle Errors here.
+                                var errorCode = error.code;
+                                var errorMessage = error.message;
+                                // The email of the user's account used.
+                                var email = error.email;
+                                // The firebase.auth.AuthCredential type that was used.
+                                var credential = error.credential;
+                                console.log(error.code)
+                                console.log(error.message)
+                                // ...
+                            });
+                        }}
+
+                        label={this.props.isLogin ? 'Logout' : 'Login With Facebook'}
+
+
+                    />}
                 />
                 <Drawer
                     docked={false}
@@ -98,13 +98,13 @@ class Navbar extends React.Component {
 let mapStateToProps = (state) => {
     return {
         isLogin: state.AuthReducer.isLogin,
-        user : state.AuthReducer.user
+        user: state.AuthReducer.user
     }
 }
-let mapDispatchToProps = (dispatch)=>{
+let mapDispatchToProps = (dispatch) => {
     return {
-        loginSuccess :  ()=>{  dispatch(AuthAction.loginUserSuccessfully())      },
-        logout : ()=> { dispatch(AuthAction.logout())}
+        loginSuccess: () => { dispatch(AuthAction.loginUserSuccessfully()) },
+        logout: () => { dispatch(AuthAction.logout()) }
     }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

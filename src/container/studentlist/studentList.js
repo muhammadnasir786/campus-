@@ -8,6 +8,7 @@ import {
     TableRowColumn
 } from 'material-ui/Table';
 import Avatar from 'material-ui/Avatar';
+import { Card, CardActions, CardHeader, CardTitle, CardText } from 'material-ui/Card';
 
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -17,36 +18,38 @@ import OneProfile from "../onepost/oneProfile";
 
 
 class StudentList extends Component {
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            value :  1
+            value: 1
         }
     }
     render() {
-        
+
         // console.log(this.state.value)
         return (
-            <div>
-              <h1>All Student List</h1>
-                      {Object.keys(this.props.allUsers).map((val,index)=>{
-                          let user ;
-                          this.props.allUsers[val].role === 'student' ? user = this.props.allUsers[val] : null
-                                   return  <OneProfile key={val} user={user}/>
-                                     
-                      })}
-            </div>
+            <Card>
+                <CardTitle title="All Student List " subtitle="All Student List in System" /> <hr />
+
+                {/* <h1>All Student List</h1> */}
+                {Object.keys(this.props.allUsers).map((val, index) => {
+                    let user;
+                    this.props.allUsers[val].role === 'student' ? user = this.props.allUsers[val] : null
+                    return <OneProfile key={val} user={user} />
+
+                })}
+            </Card>
         )
     }
 }
-let mapStateToProps = (state)=>{
-    return{
-        allUsers : state.CRSReducer.allUsers
+let mapStateToProps = (state) => {
+    return {
+        allUsers: state.CRSReducer.allUsers
     }
 }
-let mapDispatchToProps = (dispatch)=>{
-    return{
-        
+let mapDispatchToProps = (dispatch) => {
+    return {
+
     }
 }
 

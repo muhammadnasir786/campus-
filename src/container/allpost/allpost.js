@@ -2,34 +2,37 @@ import React, { Component } from 'react';
 import OnePost from '../onepost/onePost'
 import { connect } from 'react-redux'
 import * as firebase from 'firebase';
+import { Card, CardActions, CardTitle , CardHeader, CardText } from 'material-ui/Card';
+
 class AllPost extends Component {
 
 
     render() {
         // console.log(Object.keys(this.props.allPost));
         let userid = firebase.auth().currentUser.uid;
-        
+
         let demo;
 
         return (
-            <div>
-                <h1>All Posts</h1><hr />
+            <Card>
+                <CardTitle title="All Post " subtitle="All Post of all Companies" /> 
+            <br/>
                 {
-                     Object.keys(this.props.allPost).map((allPostKey, index) => {
+                    Object.keys(this.props.allPost).map((allPostKey, index) => {
                         let post = this.props.allPost[allPostKey]
                         // if (post.uid !== userid) {
-                            if (this.props.allUsers[userid] != undefined && this.props.allUsers[userid].appliedPost !== undefined) {
-                                let appliedPostKey = (Object.values(this.props.allUsers[userid].appliedPost));
-                                if (appliedPostKey.indexOf(allPostKey) === -1) {
-                                    return (<OnePost key={allPostKey} postKey={allPostKey} post={post} role={this.props.role} />);
-                                }
-                            }else{
+                        if (this.props.allUsers[userid] != undefined && this.props.allUsers[userid].appliedPost !== undefined) {
+                            let appliedPostKey = (Object.values(this.props.allUsers[userid].appliedPost));
+                            if (appliedPostKey.indexOf(allPostKey) === -1) {
                                 return (<OnePost key={allPostKey} postKey={allPostKey} post={post} role={this.props.role} />);
                             }
+                        } else {
+                            return (<OnePost key={allPostKey} postKey={allPostKey} post={post} role={this.props.role} />);
+                        }
                     })
 
                 }
-            </div>
+            </Card>
         );
     }
 }
